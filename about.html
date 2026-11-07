@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Method, AI, Privacy &amp; Accessibility</title>
+    <meta
+      name="description"
+      content="How this site was made: AI use log, methodology, privacy safeguards, and accessibility choices."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" class="nav-brand"
+          ><span class="dot" aria-hidden="true"></span> Small Signals</a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="story.html">The Story</a></li>
+          <li><a href="evidence.html">Evidence</a></li>
+          <li><a href="support.html">Get Support</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="section" style="padding-bottom: var(--space-3)">
+        <div class="prose">
+          <h1>How this site was made</h1>
+          <p>
+            This project was created for <strong>DIFH3017: Digital Humanities
+            and Health</strong>. Below we document our method, our AI use, our
+            privacy safeguards, and our accessibility choices — so that every
+            decision can be inspected.
+          </p>
+        </div>
+      </section>
+
+      <!-- PROJECT BRIEF -->
+      <section class="section section--alt">
+        <div class="prose">
+          <h2>The brief: who, what, and why</h2>
+          <div class="table-wrap">
+            <table>
+              <tbody>
+                <tr>
+                  <th scope="row" style="width: 30%">Audience</th>
+                  <td>
+                    Hong Kong university students, roughly 18–24 years old,
+                    who may be experiencing stress but may not recognise the
+                    signals or feel able to seek help.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Objective</th>
+                  <td>
+                    Help readers recognise common patterns of stress, reduce the
+                    hesitation to reach out, and connect them to verified
+                    support — without diagnosing or labelling them.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Main message</th>
+                  <td>
+                    Stress often shows up in small, ordinary ways. Reaching out
+                    is a normal, brave step — not a sign of weakness or a
+                    diagnosis.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Scope (what's in)</th>
+                  <td>
+                    Fictional narrative, cited population evidence, verified
+                    support pathways, honest uncertainty, method &amp; AI log.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Out of bounds</th>
+                  <td>
+                    No diagnosis, no treatment recommendations, no personal
+                    health data, no invented statistics, no real patient
+                    stories.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Safe next step</th>
+                  <td>
+                    Talk to a trusted person, contact a campus counsellor, or
+                    call a verified helpline.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI LOG -->
+      <section class="section">
+        <div class="prose">
+          <h2>AI use log</h2>
+          <p>
+            We used AI as a drafting assistant — not as an authority. Every AI
+            output was inspected, verified, and edited by humans. Here is what
+            AI helped with, and what humans kept control over.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Task</th>
+                  <th scope="col">AI role</th>
+                  <th scope="col">Human decision</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HTML &amp; CSS structure</td>
+                  <td>Drafted page layout, semantic structure, and CSS variables</td>
+                  <td>
+                    Inspected code; chose colour tokens; ensured semantic HTML
+                    (header, nav, main, section, footer).
+                  </td>
+                </tr>
+                <tr>
+                  <td>Interactive story &amp; choices</td>
+                  <td>Drafted story beats, choice options, and insight text</td>
+                  <td>
+                    Wrote and revised all narrative text; ensured Jay is
+                    clearly fictional; designed the "no score, no label"
+                    interaction so choices never diagnose or judge.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Evidence &amp; sources</td>
+                  <td>Helped draft the source ledger table structure</td>
+                  <td>
+                    Verified all figures against cited sources; added
+                    denominators, limits, and uncertainty notes; removed any
+                    unverified claims.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Support resources</td>
+                  <td>Suggested organisation names</td>
+                  <td>
+                    Cross-checked phone numbers and URLs against official
+                    sources; marked all as "verify before use."
+                  </td>
+                </tr>
+                <tr>
+                  <td>Accessibility</td>
+                  <td>Generated ARIA labels and skip-link code</td>
+                  <td>
+                    Tested keyboard navigation; verified semantic landmarks;
+                    added reduced-motion support and visible focus.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout--green">
+            <strong>AI did not decide the health message.</strong> Humans chose
+            the topic, audience, evidence, limits, and support pathways. AI
+            output was treated as a draft at every step.
+          </div>
+        </div>
+      </section>
+
+      <!-- METHODOLOGY -->
+      <section class="section section--alt">
+        <div class="prose">
+          <h2>Methodology</h2>
+
+          <h3>1. Evidence gathering</h3>
+          <p>
+            We prioritised Hong Kong-specific, aggregate, non-identifiable
+            sources: the 2025 CUHK &amp; Mental Health Association Depression
+            Index Survey (N=2,695), a 5.5-year cohort study of local
+            university students (Pan et al., 2025, N=960), and Hong Kong
+            Department of Health figures. We did not collect, scrape, or
+            analyse any personal data.
+          </p>
+
+          <h3>2. Story construction</h3>
+          <p>
+            Jay's day is a fictional composite, built from common patterns of
+            student stress drawn from the local research — difficulty
+            sleeping, trouble focusing, social withdrawal, and hesitation to
+            seek help. He is not based on any real person. The story uses an
+            interactive choice format, but choices never produce a score or
+            label — each one opens a short, non-judgemental note about the
+            signal it represents.
+          </p>
+
+          <h3>3. Evidence–story separation</h3>
+          <p>
+            The story and the statistics live on separate pages and are
+            visually distinguished. Jay is explicitly labelled as fictional.
+            The statistics are each given their source, population, measure,
+            and denominator. We never present the story as evidence, nor the
+            statistics as an explanation of any individual.
+          </p>
+
+          <h3>4. Verification</h3>
+          <p>
+            Every health claim was checked against a named source. Where we
+            could not verify a figure's denominator or date, we did not include
+            it. We note explicitly that the 5.5-year study ends in 2021 and the
+            2025 survey uses self-report screening (not clinical diagnosis).
+          </p>
+        </div>
+      </section>
+
+      <!-- PRIVACY -->
+      <section class="section">
+        <div class="prose">
+          <h2>Privacy</h2>
+          <p>
+            This website does not collect any personal data. There are no
+            cookies for tracking, no login, and no analytics that identify
+            visitors.
+          </p>
+          <div class="card-grid">
+            <div class="card">
+              <h3>No personal data collected</h3>
+              <p>
+                We do not ask for names, email addresses, phone numbers, or any
+                health information.
+              </p>
+            </div>
+            <div class="card">
+              <h3>No tracking cookies</h3>
+              <p>
+                The site uses no advertising or analytics cookies. It runs as
+                static HTML, CSS, and JavaScript.
+              </p>
+            </div>
+            <div class="card">
+              <h3>No identifiable stories</h3>
+              <p>
+                Jay is a fictional composite. No real person's experience is
+                published here.
+              </p>
+            </div>
+            <div class="card">
+              <h3>External links</h3>
+              <p>
+                Links to external support organisations open in a new tab.
+                Their privacy policies apply once you leave this site.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACCESSIBILITY -->
+      <section class="section section--alt">
+        <div class="prose">
+          <h2>Accessibility</h2>
+          <p>
+            We designed this site to be usable without a mouse, without sound,
+            and with assistive technology. Below are the choices we made:
+          </p>
+
+          <h3>Structure &amp; keyboard</h3>
+          <ul>
+            <li>Skip-to-content link at the top of every page.</li>
+            <li>Semantic HTML5 landmarks: header, nav, main, section, footer.</li>
+            <li>One H1 per page, logical heading hierarchy.</li>
+            <li>All interactive elements are keyboard-operable (Tab, Enter, Space).</li>
+            <li>Visible focus indicators (coral outline) on all focusable elements.</li>
+          </ul>
+
+          <h3>Visual design</h3>
+          <ul>
+            <li>
+              Colour palette chosen for contrast: dark green ink on warm paper.
+            </li>
+            <li>
+              Colour is never the only way to convey meaning — text labels and
+              tags accompany all colour cues.
+            </li>
+            <li>Responsive layout that reflows on narrow screens.</li>
+          </ul>
+
+          <h3>Media &amp; motion</h3>
+          <ul>
+            <li>
+              No autoplaying audio or video. The story is fully readable as
+              text.
+            </li>
+            <li>
+              The site respects the
+              <code>prefers-reduced-motion</code> setting.
+            </li>
+            <li>
+              All images and visual elements have text equivalents. The storymap
+              has a linear text fallback.
+            </li>
+          </ul>
+
+          <h3>Content design</h3>
+          <ul>
+            <li>Plain language; short paragraphs; clear headings.</li>
+            <li>Content note on the story page with a skip route.</li>
+            <li>Support information is one click away from every page.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ETHICS -->
+      <section class="section">
+        <div class="prose">
+          <h2>Ethical awareness</h2>
+          <p>
+            Health communication carries responsibility. Here is how we tried
+            to get it right:
+          </p>
+          <div class="card-grid">
+            <div class="card">
+              <h3>Person-first language</h3>
+              <p>
+                We avoid defining Jay by his struggles. He is a person
+                experiencing stress, not "an anxious person" or "a depressive."
+              </p>
+            </div>
+            <div class="card">
+              <h3>No stereotypes</h3>
+              <p>
+                The story avoids dramatic "crisis" tropes and shows an ordinary,
+                relatable experience. Recovery is not a single turning point.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Honest uncertainty</h3>
+              <p>
+                We say what we don't know. We mark dated evidence. We separate
+                population data from individual experience.
+              </p>
+            </div>
+            <div class="card">
+              <h3>No over-promising</h3>
+              <p>
+                We do not claim this site can diagnose, treat, or cure. We
+                direct readers to verified professional support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH -->
+      <section class="section section--alt">
+        <div class="prose">
+          <h2>Technical notes</h2>
+          <p>
+            This is a static website built with HTML, CSS, and vanilla
+            JavaScript — no frameworks, no databases, no server. It can be
+            hosted for free on GitHub Pages or any static hosting service.
+          </p>
+          <ul>
+            <li>
+              <strong>HTML:</strong> Semantic structure with ARIA labels and
+              landmarks.
+            </li>
+            <li>
+              <strong>CSS:</strong> Custom properties for design tokens, mobile-first
+              responsive layout, reduced-motion support.
+            </li>
+            <li>
+              <strong>JavaScript:</strong> Lightweight story navigation with
+              ARIA live regions for screen reader announcements.
+            </li>
+            <li>
+              <strong>Design tokens:</strong> warm paper (#f3efe8), deep green
+              (#344f45), restrained coral (#b7654a).
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CLOSE -->
+      <section class="section" style="text-align: center">
+        <div class="prose" style="margin: 0 auto">
+          <h2>Thank you for reading</h2>
+          <p>
+            If you'd like to return to the beginning, the
+            <a href="index.html">home page</a> is here. If something in Jay's
+            story felt familiar, please know that reaching out is a normal,
+            brave thing to do. The <a href="support.html">support page</a> is
+            always one click away.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>
+            <h3>Small Signals</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85">
+              A digital health communication project. Story is fictional;
+              evidence is cited. Not medical advice.
+            </p>
+          </div>
+          <div>
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="story.html">The Story</a>
+            <a href="evidence.html">Evidence</a>
+            <a href="support.html">Get Support</a>
+            <a href="about.html">About &amp; Method</a>
+          </div>
+          <div>
+            <h3>If you need help now</h3>
+            <a href="support.html">Support resources</a>
+            <a
+              href="https://www.iasp.info/resources/Crisis_Centres/"
+              target="_blank"
+              rel="noopener"
+              >Find a crisis centre (IASP)</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © <span id="year">2026</span> DIFH3017 Digital Humanities &amp;
+            Health. Built for education, not for clinical use.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
