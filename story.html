@@ -51,12 +51,7 @@
 
       <!-- PROGRESS -->
       <section class="section" style="padding-top: 0; padding-bottom: var(--space-2)">
-        <div
-          class="progress-dots"
-          id="progress-dots"
-          role="navigation"
-          aria-label="Story progress"
-        ></div>
+        <div class="progress-dots" id="progress-dots" aria-hidden="true"></div>
         <div id="live-region" class="sr-only" aria-live="polite"></div>
       </section>
 
@@ -141,7 +136,7 @@
               label: "Force yourself to keep reading for another hour",
               insight: {
                 title: "Willpower isn't the problem",
-                body: "When stress builds up, the part of your brain that handles focus and working memory gets crowded out. It's not laziness or lack of discipline — it's your nervous system saying it's overloaded. Pushing harder usually makes it worse. The same 2025 survey found that 49.4% of local university students were at risk of developing mental health problems.",
+                body: "When stress builds up, the part of your brain that handles focus and working memory gets crowded out. It's not laziness or lack of discipline — it's your nervous system saying it's overloaded. Pushing harder usually makes it worse. A separate 5.5-year cohort study (Pan et al., 2025) found that 49.4% of local university students were at risk of developing mental health problems.",
                 source: "Pan et al., 2025 · N=960"
               }
             },
@@ -214,11 +209,10 @@
       function renderProgress() {
         progressDots.innerHTML = '';
         storyNodes.forEach((node, i) => {
-          const dot = document.createElement('button');
+          const dot = document.createElement('span');
           dot.className = 'progress-dot';
           if (i === currentNode) dot.classList.add('active');
           if (i < currentNode) dot.classList.add('done');
-          dot.setAttribute('aria-label', `Part ${i + 1}`);
           progressDots.appendChild(dot);
         });
       }
