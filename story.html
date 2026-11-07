@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Story — Small Signals</title>
+    <meta
+      name="description"
+      content="Walk through an ordinary day with Jay, a fictional university student, and learn to recognise small stress signals."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" class="nav-brand"
+          ><span class="dot" aria-hidden="true"></span> Small Signals</a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="story.html">The Story</a></li>
+          <li><a href="evidence.html">Evidence</a></li>
+          <li><a href="support.html">Get Support</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="section" style="padding-bottom: var(--space-2)">
+        <div class="prose">
+          <span class="tag tag--coral">Fictional story</span>
+          <span class="tag tag--muted">For awareness, not diagnosis</span>
+          <h1>A day with Jay</h1>
+          <p>
+            Jay is a fictional second-year university student in Hong Kong.
+            Nothing here describes a real person. As you go through his day,
+            you'll be asked what you'd do — but there are no right or wrong
+            answers, no scores, and no labels. Each choice opens a short note
+            about what the signal might mean.
+          </p>
+          <div class="callout">
+            <strong>Content note:</strong> This story touches on stress,
+            sleeplessness, and feeling overwhelmed. You can stop at any time
+            and jump to <a href="support.html">support information</a>.
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRESS -->
+      <section class="section" style="padding-top: 0; padding-bottom: var(--space-2)">
+        <div
+          class="progress-dots"
+          id="progress-dots"
+          role="navigation"
+          aria-label="Story progress"
+        ></div>
+        <div id="live-region" class="sr-only" aria-live="polite"></div>
+      </section>
+
+      <!-- STORY CONTAINER -->
+      <section class="section" style="padding-top: 0">
+        <div id="story-container"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>
+            <h3>Small Signals</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85">
+              A digital health communication project. Story is fictional;
+              evidence is cited. Not medical advice.
+            </p>
+          </div>
+          <div>
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="story.html">The Story</a>
+            <a href="evidence.html">Evidence</a>
+            <a href="support.html">Get Support</a>
+            <a href="about.html">About &amp; Method</a>
+          </div>
+          <div>
+            <h3>If you need help now</h3>
+            <a href="support.html">Support resources</a>
+            <a
+              href="https://www.iasp.info/resources/Crisis_Centres/"
+              target="_blank"
+              rel="noopener"
+              >Find a crisis centre (IASP)</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © <span id="year">2026</span> DIFH3017 Digital Humanities &amp;
+            Health. Built for education, not clinical use.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Story data — fictional character Jay, 4 nodes
+      const storyNodes = [
+        {
+          id: 1,
+          time: "3:17 AM · Hall dormitory",
+          title: "The phone that won't let go",
+          text: "Jay has been awake for three hours. The screen glows in the dark — one short video, then another, then another. Tomorrow's lecture starts at 9. He tells himself he'll fall asleep any minute now.",
+          choices: [
+            {
+              label: "Keep scrolling until sleep comes",
+              insight: {
+                title: "Why this makes it harder",
+                body: "Blue light from phone screens suppresses melatonin, the hormone that helps you fall asleep. When you're already stressed, your body produces more cortisol, which also keeps you awake. It's not that you're 'bad at sleeping' — your brain is just getting mixed signals.",
+                source: "CUHK & Mental Health Association survey, 2025"
+              }
+            },
+            {
+              label: "Put the phone across the room and lie still",
+              insight: {
+                title: "A small move that helps",
+                body: "Putting the phone out of reach removes the biggest temptation. Even if you don't fall asleep right away, lying in the dark without a screen gives your brain a chance to wind down. Stress often shows up first as trouble sleeping — it's one of the most common early signals.",
+                source: "Hong Kong university student trend study, Pan et al. 2025"
+              }
+            }
+          ]
+        },
+        {
+          id: 2,
+          time: "11:40 AM · University library",
+          title: "The page that doesn't turn",
+          text: "Jay has been staring at the same paragraph for almost an hour. The words are there but they don't stick. His eyes keep drifting to his phone. He feels annoyed with himself — other people seem to handle this fine.",
+          choices: [
+            {
+              label: "Force yourself to keep reading for another hour",
+              insight: {
+                title: "Willpower isn't the problem",
+                body: "When stress builds up, the part of your brain that handles focus and working memory gets crowded out. It's not laziness or lack of discipline — it's your nervous system saying it's overloaded. Pushing harder usually makes it worse. The same 2025 survey found that 49.4% of local university students were at risk of developing mental health problems.",
+                source: "Pan et al., 2025 · N=960"
+              }
+            },
+            {
+              label: "Close the book and take a 10-minute walk outside",
+              insight: {
+                title: "Movement resets attention",
+                body: "A short walk — even 10 minutes — gives your prefrontal cortex a break and lets your attention recover. It's not avoiding work; it's making the work actually possible when you come back. The 2025 CUHK survey specifically confirmed that even light, casual movement has a strong positive relationship with mental health.",
+                source: "CUHK & Mental Health Association, 2025"
+              }
+            }
+          ]
+        },
+        {
+          id: 3,
+          time: "6:20 PM · Campus corridor",
+          title: "The message that's hard to answer",
+          text: "A group chat lights up: friends are heading to dinner. Jay looks at the message. He likes these friends. But the thought of making conversation, of being 'on', feels heavy. He types 'maybe next time' and deletes it.",
+          choices: [
+            {
+              label: "Say you're busy and go back to your room",
+              insight: {
+                title: "Withdrawal is a common signal",
+                body: "When we're stressed, our brain often tells us to conserve energy — which can look like pulling away from people. But isolation tends to deepen the feeling of being overwhelmed. It's a pattern, not a personal failure. Jay isn't alone: many students report withdrawing socially when stress rises.",
+                source: "Local student mental health research"
+              }
+            },
+            {
+              label: "Go even if you only stay for half an hour",
+              insight: {
+                title: "Connection doesn't have to be long",
+                body: "You don't have to be the life of the party. Even 30 minutes of being around people — without pressure to perform — can remind your brain that you're not carrying things alone. Short, low-effort contact is better than complete isolation. Notice what feels possible, not what feels perfect.",
+                source: "General mental health guidance"
+              }
+            }
+          ]
+        },
+        {
+          id: 4,
+          time: "10:05 PM · Back at the desk",
+          title: "The email that's almost sent",
+          text: "Jay opens the university counselling service webpage. He has the email drafted. He reads it again. 'I think I've been feeling more stressed than usual lately.' It sounds small. Maybe he should just handle it himself.",
+          choices: [
+            {
+              label: "Close the tab — you can handle it alone",
+              insight: {
+                title: "You're not the only one hesitating",
+                body: "In the 2025 CUHK survey, 55% of Hong Kong respondents said they would not — or were unsure if they would — seek professional help. The top reasons were 'too busy' and 'I believe I can cope on my own.' These reasons are understandable, but they also mean a lot of people carry more than they need to. Asking for help isn't a sign you've failed — it's a sign you're paying attention.",
+                source: "CUHK & Mental Health Association, 2025 · N=2,695"
+              }
+            },
+            {
+              label: "Hit send — even one line is enough",
+              insight: {
+                title: "The first message doesn't have to be perfect",
+                body: "You don't need to explain everything. A single line — 'I've been feeling more stressed than usual' — is enough to start. University counselling services are designed for this. Most students who use them say the first step was the hardest, and the conversation itself was a relief. Reaching out is normal, brave, and available to you.",
+                source: "Campus mental health services in Hong Kong"
+              }
+            }
+          ]
+        }
+      ];
+
+      // Rendering logic
+      let currentNode = 0;
+      const container = document.getElementById('story-container');
+      const progressDots = document.getElementById('progress-dots');
+      const liveRegion = document.getElementById('live-region');
+
+      function renderProgress() {
+        progressDots.innerHTML = '';
+        storyNodes.forEach((node, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'progress-dot';
+          if (i === currentNode) dot.classList.add('active');
+          if (i < currentNode) dot.classList.add('done');
+          dot.setAttribute('aria-label', `Part ${i + 1}`);
+          progressDots.appendChild(dot);
+        });
+      }
+
+      function renderNode(index) {
+        const node = storyNodes[index];
+        container.innerHTML = `
+          <article class="story-card">
+            <span class="time">Part ${index + 1} of ${storyNodes.length} · ${node.time}</span>
+            <h2>${node.title}</h2>
+            <p class="scene-text">${node.text}</p>
+            <div class="choices">
+              ${node.choices.map((c, i) => `
+                <button class="choice-btn" data-choice="${i}">
+                  <strong>${i + 1}.</strong> ${c.label}
+                </button>
+              `).join('')}
+            </div>
+          </article>
+        `;
+
+        container.querySelectorAll('.choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const choiceIdx = parseInt(btn.dataset.choice);
+            showInsight(node, choiceIdx);
+          });
+        });
+
+        liveRegion.textContent = `Part ${index + 1}: ${node.title}`;
+      }
+
+      function showInsight(node, choiceIdx) {
+        const choice = node.choices[choiceIdx];
+        const card = container.querySelector('.story-card');
+        const choicesEl = card.querySelector('.choices');
+
+        // Highlight chosen, disable all
+        card.querySelectorAll('.choice-btn').forEach((btn, i) => {
+          btn.disabled = true;
+          if (i === choiceIdx) {
+            btn.style.borderColor = 'var(--green)';
+            btn.style.background = 'var(--green-tint)';
+          } else {
+            btn.style.opacity = '0.5';
+          }
+        });
+
+        // Insert insight
+        const insight = document.createElement('div');
+        insight.className = 'insight';
+        insight.setAttribute('role', 'region');
+        insight.innerHTML = `
+          <h4>${choice.insight.title}</h4>
+          <p>${choice.insight.body}</p>
+          <a class="data-tag" href="evidence.html" title="${choice.insight.source}">Where this comes from &rarr;</a>
+        `;
+        choicesEl.after(insight);
+
+        // Continue button
+        const isLast = currentNode === storyNodes.length - 1;
+        const continueRow = document.createElement('div');
+        continueRow.className = 'continue-row';
+        if (isLast) {
+          continueRow.innerHTML = `
+            <p class="story-outro">Jay's day is just one story. If parts of it felt familiar, you don't have to figure it out alone.</p>
+            <a href="support.html" class="btn btn--primary btn--wide">Get support &rarr;</a>
+            <a href="evidence.html" class="btn btn--ghost" style="margin-left: 0.5rem">Read the evidence</a>
+          `;
+        } else {
+          continueRow.innerHTML = `
+            <button class="btn btn--primary" id="continue-btn">Continue →</button>
+          `;
+        }
+        insight.after(continueRow);
+
+        if (!isLast) {
+          document.getElementById('continue-btn').addEventListener('click', () => {
+            currentNode++;
+            renderProgress();
+            renderNode(currentNode);
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+      }
+
+      // Initialize
+      renderProgress();
+      renderNode(0);
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
