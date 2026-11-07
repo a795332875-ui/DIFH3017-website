@@ -6,6 +6,8 @@
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("js");
+
   /* ---------- Set active nav link ---------- */
   const path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((link) => {
@@ -70,7 +72,9 @@
     document.getElementById("prev-scene")?.addEventListener("click", () => {
       showScene(current - 1);
     });
-    document.getElementById("next-scene")?.addEventListener("click", () => showScene(current + 1));
+    document.getElementById("next-scene")?.addEventListener("click", () => {
+      showScene(current + 1);
+    });
 
     // Storymap click
     storymap?.querySelectorAll(".map-stop").forEach((stop, i) => {
