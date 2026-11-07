@@ -617,7 +617,7 @@ tbody tr:nth-child(even) {
   border-radius: 50%;
   background: var(--line);
   border: none;
-  cursor: pointer;
+  display: inline-block;
   padding: 0;
   transition: background 0.2s, transform 0.2s;
 }
@@ -785,13 +785,16 @@ tbody tr:nth-child(even) {
 }
 
 .chart-bar {
-  transform: scaleX(0);
   transform-box: fill-box;
   transform-origin: left center;
   transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.chart.is-visible .chart-bar {
+.js .chart-bar {
+  transform: scaleX(0);
+}
+
+.js .chart.is-visible .chart-bar {
   transform: scaleX(1);
 }
 
