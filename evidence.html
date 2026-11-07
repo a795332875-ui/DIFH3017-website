@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evidence — Small Signals</title>
+    <meta
+      name="description"
+      content="Verified Hong Kong data on university student stress and mental health, with sources, denominators, and honest limits."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" class="nav-brand"
+          ><span class="dot" aria-hidden="true"></span> Small Signals</a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="story.html">The Story</a></li>
+          <li><a href="evidence.html">Evidence</a></li>
+          <li><a href="support.html">Get Support</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="section" style="padding-bottom: var(--space-3)">
+        <div class="prose">
+          <span class="tag">Evidence-based</span>
+          <span class="tag tag--muted">Hong Kong data</span>
+          <h1>What the numbers do — and don't — say</h1>
+          <p>
+            Every figure below is from a Hong Kong source and includes its
+            year, sample, measure, and denominator. A number without context is
+            misleading — so we always show the frame. This page is separate
+            from Jay's fictional story on purpose.
+          </p>
+          <div class="callout callout--green">
+            <strong>Key principle:</strong> A screening score is not a
+            diagnosis. A population estimate cannot describe any individual.
+            We name each measure exactly and do not upgrade it into a clinical
+            claim.
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="section" style="padding-top: var(--space-2)">
+        <h2 style="text-align: center">At a glance</h2>
+        <div class="stat-grid">
+          <div class="stat">
+            <span class="number">68.5%</span>
+            <div class="label">
+              of Hong Kong university students showed some level of depressive
+              symptoms
+            </div>
+            <span class="caveat"
+              >Pan et al., 2025 · N=960 · BDI-II screening (not diagnosis) ·
+              2015/16–2020/21</span
+            >
+          </div>
+
+          <div class="stat">
+            <span class="number">43.5%</span>
+            <div class="label">
+              of 18–24-year-olds reported moderate-to-severe depressive
+              symptoms
+            </div>
+            <span class="caveat"
+              >CUHK &amp; Mental Health Association, 2025 survey · N=2,695 ·
+              self-report</span
+            >
+          </div>
+
+          <div class="stat">
+            <span class="number">55%</span>
+            <div class="label">
+              would not or were unsure about seeking professional help
+            </div>
+            <span class="caveat"
+              >Same 2025 survey · top reasons: busy, believe they can cope</span
+            >
+          </div>
+
+          <div class="stat">
+            <span class="number">49.4%</span>
+            <div class="label">
+              of students were at risk of developing mental health problems
+            </div>
+            <span class="caveat"
+              >Pan et al., 2025 · N=960 · GHQ-12 screening · local
+              university</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- CHART 1 -->
+      <section class="section" style="padding-top: 0">
+        <div class="chart" data-chart>
+          <h3>How common are symptoms? (one study, four thresholds)</h3>
+          <svg viewBox="0 0 660 250" role="img" aria-labelledby="c1t c1d">
+            <title id="c1t">Bar chart of depressive symptom levels among Hong Kong university students</title>
+            <desc id="c1d">
+              68.5 percent showed any depressive symptoms; 49.4 percent were at
+              risk on the GHQ-12; 14.1 percent reported high psychological
+              distress; 12.8 percent reported severe depressive symptoms.
+            </desc>
+
+            <text x="0" y="32" font-size="14" fill="#3a3a36">Any depressive symptoms</text>
+            <rect x="190" y="14" width="420" height="26" rx="13" fill="#e8e2d6" />
+            <rect class="chart-bar" x="190" y="14" width="287.7" height="26" rx="13" fill="#344f45" />
+            <text x="487" y="32" font-size="14" font-weight="600" fill="#344f45">68.5%</text>
+
+            <text x="0" y="92" font-size="14" fill="#3a3a36">At risk (GHQ-12)</text>
+            <rect x="190" y="74" width="420" height="26" rx="13" fill="#e8e2d6" />
+            <rect class="chart-bar" x="190" y="74" width="207.5" height="26" rx="13" fill="#4a6b5e" />
+            <text x="407" y="92" font-size="14" font-weight="600" fill="#344f45">49.4%</text>
+
+            <text x="0" y="152" font-size="14" fill="#3a3a36">High psychological distress</text>
+            <rect x="190" y="134" width="420" height="26" rx="13" fill="#e8e2d6" />
+            <rect class="chart-bar" x="190" y="134" width="59.2" height="26" rx="13" fill="#b7654a" />
+            <text x="259" y="152" font-size="14" font-weight="600" fill="#b7654a">14.1%</text>
+
+            <text x="0" y="212" font-size="14" fill="#3a3a36">Severe depressive symptoms</text>
+            <rect x="190" y="194" width="420" height="26" rx="13" fill="#e8e2d6" />
+            <rect class="chart-bar" x="190" y="194" width="53.8" height="26" rx="13" fill="#8f4a35" />
+            <text x="254" y="212" font-size="14" font-weight="600" fill="#8f4a35">12.8%</text>
+          </svg>
+
+          <table class="sr-only">
+            <caption>Depressive symptom levels, Pan et al. 2025, N=960</caption>
+            <tr><th>Measure</th><th>Share</th></tr>
+            <tr><td>Any depressive symptoms (BDI-II)</td><td>68.5%</td></tr>
+            <tr><td>At risk (GHQ-12)</td><td>49.4%</td></tr>
+            <tr><td>High psychological distress (GHQ-12)</td><td>14.1%</td></tr>
+            <tr><td>Severe depressive symptoms (BDI-II)</td><td>12.8%</td></tr>
+          </table>
+
+          <p class="chart-note">
+            Source: Pan et al., 2025 · N=960 · local university students,
+            2015/16–2020/21. These are <strong>different thresholds on two
+            screening tools</strong> within the same study — they overlap and
+            should not be added together. Screening is not diagnosis.
+          </p>
+        </div>
+      </section>
+
+      <!-- CHART 2 -->
+      <section class="section" style="padding-top: 0">
+        <div class="chart" data-chart>
+          <h3>Would people seek professional help?</h3>
+          <svg viewBox="0 0 660 130" role="img" aria-labelledby="c2t c2d">
+            <title id="c2t">Split bar showing help-seeking intention in Hong Kong</title>
+            <desc id="c2d">
+              55 percent said they would not, or were unsure about, seeking
+              professional help. 45 percent said they would.
+            </desc>
+
+            <rect class="chart-bar" x="0" y="30" width="363" height="46" fill="#b7654a" />
+            <rect class="chart-bar" x="363" y="30" width="297" height="46" fill="#cfd9d3" style="transform-origin: left center" />
+            <text x="181" y="59" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">55%</text>
+            <text x="511" y="59" text-anchor="middle" font-size="14" font-weight="700" fill="#344f45">45%</text>
+
+            <text x="0" y="100" font-size="14" fill="#3a3a36">Would not, or unsure →</text>
+            <text x="660" y="100" font-size="14" fill="#3a3a36" text-anchor="end">← Would seek help</text>
+          </svg>
+
+          <table class="sr-only">
+            <caption>Help-seeking intention, CUHK survey 2025, N=2,695</caption>
+            <tr><th>Response</th><th>Share</th></tr>
+            <tr><td>Would not, or unsure about, seeking professional help</td><td>55%</td></tr>
+            <tr><td>Would seek professional help</td><td>45%</td></tr>
+          </table>
+
+          <p class="chart-note">
+            Source: CUHK &amp; Mental Health Association, 2025 · N=2,695.
+            The most common reasons given were "too busy" and "I believe I can
+            cope on my own."
+          </p>
+        </div>
+      </section>
+
+      <!-- TREND -->
+      <section class="section section--alt">
+        <div class="prose">
+          <h2>It's been getting worse, not better</h2>
+          <p>
+            A 5.5-year study tracking 11 cohorts of Hong Kong university
+            students (from Semester 2 of 2015/16 to Semester 2 of 2020/21)
+            found a <strong>statistically significant rising trend</strong>
+            across every negative mental health indicator:
+          </p>
+          <ul>
+            <li>Psychological distress</li>
+            <li>Perceived stress</li>
+            <li>Depressive symptoms</li>
+            <li>Negative thoughts and negative emotions</li>
+          </ul>
+          <p>
+            The effect sizes were medium (η² = 0.045–0.103), meaning the
+            change was meaningful, not just noise. By the end of the study
+            period, 12.8% of students reported severe depressive symptoms and
+            14.1% showed high psychological distress.
+          </p>
+          <div class="callout">
+            <strong>Note:</strong> This study spans the COVID-19 pandemic.
+            Rising trends may reflect pandemic-related stress as well as
+            longer-term pressures. We cannot separate the two from this data
+            alone.
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT WE KNOW -->
+      <section class="section">
+        <div class="prose">
+          <h2>What we can say with confidence</h2>
+
+          <h3>1. Stress among Hong Kong university students is common</h3>
+          <p>
+            Multiple independent studies — a 5.5-year cohort study and a 2025
+            territory-wide survey — both find that a large share of students
+            report symptoms of stress, anxiety, or depression. This is not a
+            fringe experience.
+          </p>
+
+          <h3>2. Young adults (18–24) are the most affected age group</h3>
+          <p>
+            The 2025 CUHK survey found that 18–24-year-olds had higher
+            depression and anxiety scores than any other adult age group, with
+            43.5% reporting moderate-to-severe depressive symptoms.
+          </p>
+
+          <h3>3. Most people don't seek help</h3>
+          <p>
+            55% of 2025 survey respondents said they would not or were unsure
+            about seeking professional help. The most common reasons were
+            "too busy" and "I believe I can cope on my own." The gap between
+            needing support and getting it is one of the biggest problems we
+            face.
+          </p>
+
+          <h3>4. Screen time and stress are linked</h3>
+          <p>
+            The 2025 survey found a significant positive correlation between
+            screen time and depression/anxiety scores among young adults. This
+            is an association, not proof of causation — but it's consistent
+            with sleep and attention research.
+          </p>
+
+          <h3>5. Even light movement helps</h3>
+          <p>
+            The same survey confirmed a strong positive relationship between
+            casual movement (walking, stretching) and mental health — the key
+            is "doing something," not intensity.
+          </p>
+        </div>
+      </section>
+
+      <!-- WHAT WE CANNOT SAY -->
+      <section class="section section--alt">
+        <div class="prose">
+          <h2>What we cannot say — honest uncertainty</h2>
+          <div class="callout">
+            <p>
+              <strong>We cannot diagnose Jay or anyone else.</strong> A story
+              and a set of statistics cannot tell us whether a specific person
+              has a condition.
+            </p>
+            <p>
+              <strong>We cannot say these are all "depression" figures.</strong>
+              Most numbers come from screening tools (BDI, GHQ-12, PHQ-9),
+              which measure <em>symptoms</em>, not clinical diagnoses. The
+              actual rate of diagnosed depression in Hong Kong is much lower
+              (around 0.8% according to the Department of Health), because
+              many people with symptoms never see a clinician.
+            </p>
+            <p>
+              <strong>We cannot say screen time causes stress.</strong> The
+              data shows a correlation, but stressed students may also use
+              screens more as a coping mechanism. The direction of cause is
+              unclear.
+            </p>
+            <p>
+              <strong>We cannot say every stressed student needs clinical
+              help.</strong> Stress is a normal part of university life. The
+              question is whether it's persistent and impairing — which only
+              a qualified professional can assess.
+            </p>
+            <p>
+              <strong>We cannot guarantee current prevalence.</strong> The
+              5.5-year study ends in 2021; the 2025 survey is the most recent
+              but uses a different method. True current prevalence may differ.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOURCE LEDGER -->
+      <section class="section">
+        <h2 style="text-align: center">Source ledger</h2>
+        <p style="text-align: center; color: var(--muted); max-width: 60ch; margin: 0 auto var(--space-3)">
+          Every claim traces back to a named source. Where we are uncertain, we
+          say so.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Claim</th>
+                <th scope="col">Source</th>
+                <th scope="col">Sample &amp; year</th>
+                <th scope="col">Measure</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>68.5% of HK university students have some depressive symptoms</td>
+                <td>Pan, Wang &amp; Shum, 2025 — Int. Journal of Adolescence &amp; Youth</td>
+                <td>N=960, local university, 2015/16–2020/21</td>
+                <td>BDI-II (screening, not diagnosis)</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>49.4% at risk of mental health problems</td>
+                <td>Same study</td>
+                <td>Same sample</td>
+                <td>GHQ-12 screening</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>12.8% severe depressive symptoms; 14.1% high psychological distress</td>
+                <td>Same study</td>
+                <td>Same sample</td>
+                <td>BDI-II severe range; GHQ-12 high range</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>Significant rising trend 2015–2021 across all negative indicators</td>
+                <td>Same study</td>
+                <td>11 cohorts</td>
+                <td>One-way ANOVA, medium effect (η² 0.045–0.103)</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>43.5% of 18–24s have moderate-to-severe depressive symptoms</td>
+                <td>CUHK Social Work &amp; Mental Health Association of HK, 7th Depression Index Survey</td>
+                <td>N=2,695, HK, 2025</td>
+                <td>Self-report depression scale</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>32.7% of 18–24s have moderate-to-severe anxiety</td>
+                <td>Same 2025 survey</td>
+                <td>Same sample</td>
+                <td>Self-report anxiety scale</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>55% would not or unsure about seeking professional help</td>
+                <td>Same 2025 survey</td>
+                <td>Same sample</td>
+                <td>Self-report help-seeking intention</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>Screen time correlated with depression &amp; anxiety scores</td>
+                <td>Same 2025 survey</td>
+                <td>18–24 subgroup</td>
+                <td>Correlation (not causation)</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>0.8% diagnosed depression; 0.5% diagnosed anxiety</td>
+                <td>HK Department of Health</td>
+                <td>HK population</td>
+                <td>Self-reported clinician diagnosis (much lower than screening)</td>
+                <td><span class="tag">Cited</span></td>
+              </tr>
+              <tr>
+                <td>Jay's day, choices, and experience</td>
+                <td>Fictional composite</td>
+                <td>N/A</td>
+                <td>Creative illustration, not evidence</td>
+                <td><span class="tag tag--coral">Fiction</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="text-align: center; color: var(--muted); font-size: 0.9rem">
+          Always check original sources before relying on any figure. Methods
+          and samples differ across studies.
+        </p>
+      </section>
+
+      <!-- HOW TO READ -->
+      <section class="section section--alt">
+        <div class="prose">
+          <h2>How to read these numbers responsibly</h2>
+          <div class="card-grid">
+            <div class="card">
+              <h3>Check the denominator</h3>
+              <p>
+                "68.5%" of <em>what</em>? Of 960 local university students in
+                one study, measured by BDI-II screening. Without the who and
+                the how, the percentage is incomplete.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Check the measure</h3>
+              <p>
+                Was it a screening questionnaire or a clinical diagnosis?
+                Screening finds many more people; diagnosis confirms fewer.
+                Both are useful — for different questions.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Check the date</h3>
+              <p>
+                The 5.5-year study ends in 2021. The CUHK survey is from 2025.
+                Mental health patterns shift; always look for the most recent
+                verified source.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Check the leap</h3>
+              <p>
+                Does the claim use the measure's exact name, or does it turn
+                "depressive symptoms" into "depression"? The safe reading is
+                usually the narrower one.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section" style="text-align: center">
+        <div class="prose" style="margin: 0 auto">
+          <h2>Numbers are one part of the picture</h2>
+          <p>
+            Statistics show the scale, but they don't describe a day. Jay's
+            <a href="story.html">story</a> offers the human side. And if
+            something here feels familiar, the
+            <a href="support.html">support page</a> lists verified Hong Kong
+            resources.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>
+            <h3>Small Signals</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85">
+              A digital health communication project. Story is fictional;
+              evidence is cited. Not medical advice.
+            </p>
+          </div>
+          <div>
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="story.html">The Story</a>
+            <a href="evidence.html">Evidence</a>
+            <a href="support.html">Get Support</a>
+            <a href="about.html">About &amp; Method</a>
+          </div>
+          <div>
+            <h3>If you need help now</h3>
+            <a href="support.html">Support resources</a>
+            <a
+              href="https://www.iasp.info/resources/Crisis_Centres/"
+              target="_blank"
+              rel="noopener"
+              >Find a crisis centre (IASP)</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © <span id="year">2026</span> DIFH3017 Digital Humanities &amp;
+            Health. Built for education, not clinical use.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
