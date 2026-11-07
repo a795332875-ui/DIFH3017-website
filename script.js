@@ -12,7 +12,10 @@
   const path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((link) => {
     const href = link.getAttribute("href");
-    if (href === path) link.classList.add("active");
+    if (href === path) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+    }
   });
 
   /* ---------- Story scene switching ---------- */
