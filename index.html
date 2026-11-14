@@ -9,6 +9,20 @@
       content="An interactive, evidence-based site helping Hong Kong university students recognise stress signals and take a small step toward support. Fiction paired with real local data."
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Gentle entrance for the hero text */
+      .hero .eyebrow, .hero h1, .hero .lede, .hero .btn-group{
+        opacity:0;animation:heroRise .7s ease-out forwards;
+      }
+      .hero .eyebrow{animation-delay:.05s}
+      .hero h1{animation-delay:.15s}
+      .hero .lede{animation-delay:.3s}
+      .hero .btn-group{animation-delay:2s}
+      @keyframes heroRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+      @media (prefers-reduced-motion:reduce){
+        .hero .eyebrow,.hero h1,.hero .lede,.hero .btn-group{animation:none;opacity:1}
+      }
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -48,22 +62,43 @@
               .hero-illustration .coral{fill:var(--coral);stroke:var(--coral)}
               .hero-illustration .dot{fill:currentColor}
               .hero-illustration .lbl{font-family:var(--font-mono,monospace);font-size:10px;fill:currentColor;opacity:.7;letter-spacing:.05em}
+              /* The observation path draws itself, like a pen in a notebook */
+              .hero-illustration .draw-path{stroke-dasharray:1000;stroke-dashoffset:1000;animation:heroDraw 2.2s ease-out .3s forwards}
+              .hero-illustration .sig{opacity:0;animation:heroFade .5s ease-out forwards}
+              .hero-illustration .s1{animation-delay:.7s}
+              .hero-illustration .s2{animation-delay:1s}
+              .hero-illustration .s3{animation-delay:1.3s}
+              .hero-illustration .s4{animation-delay:1.55s}
+              .hero-illustration .s5{animation-delay:1.8s}
+              .hero-illustration .marker{opacity:0;animation:heroFade .6s ease-out forwards}
+              .hero-illustration .m1{animation-delay:.6s}
+              .hero-illustration .m2{animation-delay:1s}
+              .hero-illustration .m3{animation-delay:1.4s}
+              .hero-illustration .m4{animation-delay:1.8s}
+              .hero-illustration .fade-late{opacity:0;animation:heroFade .8s ease-out 2.2s forwards}
+              @keyframes heroDraw{to{stroke-dashoffset:0}}
+              @keyframes heroFade{to{opacity:1}}
+              @media (prefers-reduced-motion:reduce){
+                .hero-illustration *{animation:none!important}
+                .hero-illustration .draw-path{stroke-dashoffset:0}
+                .hero-illustration .sig,.hero-illustration .marker,.hero-illustration .fade-late{opacity:1}
+              }
             </style>
           </defs>
           <line x1="40" y1="28" x2="600" y2="28" class="ln-soft"/>
           <line x1="40" y1="172" x2="600" y2="172" class="ln-soft"/>
-          <path d="M70 110 C 140 60, 200 150, 270 100 S 400 70, 470 120 S 560 90, 590 110" class="ln"/>
-          <circle cx="120" cy="82" r="2.5" class="coral"/>
-          <circle cx="200" cy="128" r="2.5" class="coral"/>
-          <circle cx="340" cy="105" r="2.5" class="coral"/>
-          <circle cx="430" cy="92" r="2.5" class="coral"/>
-          <circle cx="540" cy="112" r="2.5" class="coral"/>
-          <g transform="translate(70,110)">
+          <path d="M70 110 C 140 60, 200 150, 270 100 S 400 70, 470 120 S 560 90, 590 110" class="ln draw-path" pathLength="1000"/>
+          <circle cx="120" cy="82" r="2.5" class="coral sig s1"/>
+          <circle cx="200" cy="128" r="2.5" class="coral sig s2"/>
+          <circle cx="340" cy="105" r="2.5" class="coral sig s3"/>
+          <circle cx="430" cy="92" r="2.5" class="coral sig s4"/>
+          <circle cx="540" cy="112" r="2.5" class="coral sig s5"/>
+          <g transform="translate(70,110)" class="marker m1">
             <circle cx="0" cy="-42" r="13" class="ln"/>
             <path d="M -5 -48 a 11 11 0 1 0 0 12 a 8 8 0 1 1 0 -12 z" class="dot" opacity=".85"/>
             <text x="0" y="-62" text-anchor="middle" class="lbl">03:17</text>
           </g>
-          <g transform="translate(270,100)">
+          <g transform="translate(270,100)" class="marker m2">
             <circle cx="0" cy="-42" r="8" class="ln"/>
             <g class="ln">
               <line x1="0" y1="-56" x2="0" y2="-60"/>
@@ -77,28 +112,28 @@
             </g>
             <text x="0" y="-62" text-anchor="middle" class="lbl">11:40</text>
           </g>
-          <g transform="translate(470,120)">
+          <g transform="translate(470,120)" class="marker m3">
             <path d="M -12 -36 a 12 12 0 0 1 24 0 z" class="ln"/>
             <line x1="-16" y1="-36" x2="16" y2="-36" class="ln"/>
             <line x1="-14" y1="-32" x2="14" y2="-32" class="ln-soft"/>
             <line x1="-10" y1="-28" x2="10" y2="-28" class="ln-soft"/>
             <text x="0" y="-62" text-anchor="middle" class="lbl">18:20</text>
           </g>
-          <g transform="translate(590,110)">
+          <g transform="translate(590,110)" class="marker m4">
             <path d="M -8 -54 L 8 -54 L 6 -40 L -6 -40 Z" class="ln"/>
             <line x1="0" y1="-40" x2="0" y2="-28" class="ln"/>
             <path d="M -10 -28 L 10 -28" class="ln"/>
             <path d="M -9 -52 Q 0 -46 9 -52" class="coral" fill="none" stroke-width="1.5"/>
             <text x="0" y="-62" text-anchor="middle" class="lbl">22:05</text>
           </g>
-          <g class="ln-soft">
+          <g class="ln-soft fade-late">
             <line x1="100" y1="172" x2="100" y2="176"/>
             <line x1="200" y1="172" x2="200" y2="176"/>
             <line x1="300" y1="172" x2="300" y2="176"/>
             <line x1="400" y1="172" x2="400" y2="176"/>
             <line x1="500" y1="172" x2="500" y2="176"/>
           </g>
-          <text x="320" y="190" text-anchor="middle" class="lbl">&#8212; a day, observed &#8212;</text>
+          <text x="320" y="190" text-anchor="middle" class="lbl fade-late">&#8212; a day, observed &#8212;</text>
         </svg>
         <div class="btn-group">
           <a href="story.html" class="btn btn--primary">Start the story</a>
