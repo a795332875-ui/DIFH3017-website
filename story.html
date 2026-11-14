@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body data-light="morning">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
@@ -20,7 +20,7 @@
         >
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="story.html">The Story</a></li>
+          <li><a href="story.html" aria-current="page">The Story</a></li>
           <li><a href="evidence.html">Evidence</a></li>
           <li><a href="support.html">Get Support</a></li>
           <li><a href="about.html">About</a></li>
@@ -46,6 +46,10 @@
             sleeplessness, and feeling overwhelmed. You can stop at any time
             and jump to <a href="support.html">support information</a>.
           </div>
+          <p class="mono-note">
+            The page's light follows Jay's day — from 3 a.m. dark to evening
+            lamp.
+          </p>
         </div>
       </section>
 
@@ -105,6 +109,8 @@
         {
           id: 1,
           time: "3:17 AM · Hall dormitory",
+          clock: "03:17",
+          light: "night",
           title: "The phone that won't let go",
           text: "Jay has been awake for three hours. The screen glows in the dark — one short video, then another, then another. Tomorrow's lecture starts at 9. He tells himself he'll fall asleep any minute now.",
           choices: [
@@ -129,6 +135,8 @@
         {
           id: 2,
           time: "11:40 AM · University library",
+          clock: "11:40",
+          light: "morning",
           title: "The page that doesn't turn",
           text: "Jay has been staring at the same paragraph for almost an hour. The words are there but they don't stick. His eyes keep drifting to his phone. He feels annoyed with himself — other people seem to handle this fine.",
           choices: [
@@ -153,6 +161,8 @@
         {
           id: 3,
           time: "6:20 PM · Campus corridor",
+          clock: "18:20",
+          light: "dusk",
           title: "The message that's hard to answer",
           text: "A group chat lights up: friends are heading to dinner. Jay looks at the message. He likes these friends. But the thought of making conversation, of being 'on', feels heavy. He types 'maybe next time' and deletes it.",
           choices: [
@@ -177,6 +187,8 @@
         {
           id: 4,
           time: "10:05 PM · Back at the desk",
+          clock: "22:05",
+          light: "evening",
           title: "The email that's almost sent",
           text: "Jay opens the university counselling service webpage. He has the email drafted. He reads it again. 'I think I've been feeling more stressed than usual lately.' It sounds small. Maybe he should just handle it himself.",
           choices: [
@@ -211,6 +223,7 @@
         storyNodes.forEach((node, i) => {
           const dot = document.createElement('span');
           dot.className = 'progress-dot';
+          dot.setAttribute('data-label', node.clock);
           if (i === currentNode) dot.classList.add('active');
           if (i < currentNode) dot.classList.add('done');
           progressDots.appendChild(dot);
@@ -219,6 +232,7 @@
 
       function renderNode(index) {
         const node = storyNodes[index];
+        document.body.dataset.light = node.light;
         container.innerHTML = `
           <article class="story-card">
             <span class="time">Part ${index + 1} of ${storyNodes.length} · ${node.time}</span>
@@ -301,6 +315,12 @@
       // Initialize
       renderProgress();
       renderNode(0);
+      // Enable colour transitions only after the first paint has settled
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.body.classList.add('is-lit');
+        });
+      });
     </script>
 
     <script src="script.js"></script>
