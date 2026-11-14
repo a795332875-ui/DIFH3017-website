@@ -839,3 +839,590 @@ tbody tr:nth-child(even) {
     border-radius: var(--radius-sm);
   }
 }
+/* =========================================================
+   V2 — "Field notebook": graph paper, instrument labels,
+   and a page whose light follows Jay's day.
+   ========================================================= */
+
+:root {
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino,
+    "Book Antiqua", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --footer-bg: #2b423a;
+  --footer-ink: #f3efe8;
+}
+
+body {
+  font-family: var(--font-display);
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(52, 79, 69, 0.055) 0 1px,
+      transparent 1px 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(52, 79, 69, 0.055) 0 1px,
+      transparent 1px 30px
+    );
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
+
+/* First paint should never fade in: transitions begin after load */
+body:not(.is-lit) {
+  transition: none;
+}
+
+/* paper grain */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
+}
+
+h1 {
+  line-height: 1.03;
+  letter-spacing: -0.028em;
+}
+
+h2 {
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.12rem;
+}
+
+/* ---------- Header ---------- */
+.nav-brand {
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.nav-brand .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 0;
+  box-shadow: 0 0 0 3px var(--coral-tint);
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.71rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom-width: 1px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: left;
+}
+
+.hero .eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--space-3);
+}
+
+.hero h1 {
+  max-width: 20ch;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: clamp(2.3rem, 6vw, 4.2rem);
+}
+
+.hero .lede {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 52ch;
+  font-size: 1.18rem;
+}
+
+.btn-group {
+  justify-content: flex-start;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  border-radius: 2px;
+  border-width: 1px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.5rem;
+}
+
+.btn--ghost {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+/* ---------- Cards ---------- */
+.card-grid {
+  counter-reset: cardcount;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  counter-increment: cardcount;
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.4rem;
+}
+
+.card::before {
+  content: "0" counter(cardcount);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: var(--coral);
+  margin-bottom: 0.7rem;
+}
+
+.card .icon {
+  display: none;
+}
+
+/* ---------- Tags ---------- */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--green);
+  padding: 0.18rem 0.5rem;
+}
+
+.tag--coral {
+  background: transparent;
+  border-color: var(--coral);
+  color: var(--coral);
+}
+
+.tag--muted {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+/* ---------- Stats ---------- */
+.stat {
+  background: transparent;
+  border: none;
+  border-top: 2px solid var(--ink);
+  border-radius: 0;
+  padding: 1.2rem 0 0;
+  text-align: left;
+}
+
+.stat .number {
+  font-size: clamp(2.6rem, 7vw, 3.6rem);
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+
+.stat .label {
+  font-size: 0.98rem;
+  max-width: 34ch;
+}
+
+.stat .caveat {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+/* ---------- Tables ---------- */
+th {
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--ink);
+}
+
+tbody tr:nth-child(even) {
+  background: transparent;
+}
+
+/* ---------- Charts ---------- */
+.chart {
+  background: transparent;
+  border: none;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.4rem 0;
+}
+
+.chart h3 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+}
+
+.chart-note {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.75;
+}
+
+/* ---------- Callouts ---------- */
+.callout {
+  border-radius: 0;
+  border-left-width: 2px;
+  background: var(--coral-tint);
+}
+
+.callout--green {
+  border-left-width: 2px;
+}
+
+/* bands of tinted paper become ruled divisions instead */
+.section--alt {
+  background: transparent;
+  border-top: 1px solid var(--line);
+  border-bottom: none;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-ink);
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
+
+.site-header {
+  transition: background-color 0.7s ease, border-color 0.7s ease;
+}
+
+.footer-grid h3,
+.footer-grid a {
+  color: var(--footer-ink);
+}
+
+/* ---------- Story ---------- */
+.story-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+  padding: var(--space-4);
+  transition: background-color 0.45s ease, border-color 0.45s ease,
+    color 0.45s ease;
+  animation: riseIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.story-card .time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.story-card h2 {
+  font-size: clamp(1.5rem, 3.4vw, 2.15rem);
+}
+
+.story-card .scene-text {
+  font-size: 1.12rem;
+  line-height: 1.85;
+}
+
+.choice-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1rem 1.2rem 1rem 2.7rem;
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 1.03rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    color 0.45s ease;
+}
+
+.choice-btn strong {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--coral);
+}
+
+.choice-btn:hover {
+  background: var(--paper-2);
+  border-color: var(--ink);
+}
+
+.insight {
+  background: transparent;
+  border-left: 2px solid var(--coral);
+  border-radius: 0;
+  padding-left: 1.2rem;
+  transition: border-color 0.45s ease;
+}
+
+.insight h4 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+
+.insight .data-tag {
+  border-radius: 0;
+  border: 1px solid var(--line);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Progress: time axis, not dots ---------- */
+.progress-dots {
+  display: flex;
+  justify-content: space-between;
+  max-width: 420px;
+  margin: var(--space-4) auto 2.2rem;
+  position: relative;
+  padding: 0;
+}
+
+.progress-dots::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 5px;
+  height: 1px;
+  background: var(--line);
+}
+
+.progress-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.progress-dot.active {
+  background: var(--coral);
+  border-color: var(--coral);
+  transform: scale(1.35);
+}
+
+.progress-dot.done {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.progress-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.mono-note {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------
+   Light of the day — driven by body[data-light]
+   --------------------------------------------------------- */
+body[data-light="night"] {
+  --paper: #121a20;
+  --paper-2: #1e2a33;
+  --ink: #e7e9e6;
+  --ink-soft: #c2cac6;
+  --muted: #8f9d99;
+  --green: #a9c9bb;
+  --green-soft: #8fb3a4;
+  --green-tint: #1d2a30;
+  --coral: #e89b7f;
+  --coral-tint: #332420;
+  --line: #2b3841;
+  --white: #18222a;
+  --footer-bg: #0b1216;
+  --footer-ink: #dfe4e1;
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(169, 201, 187, 0.05) 0 1px,
+      transparent 1px 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(169, 201, 187, 0.05) 0 1px,
+      transparent 1px 30px
+    );
+}
+
+body[data-light="night"]::before,
+body[data-light="evening"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: inset 0 0 220px rgba(0, 0, 0, 0.55);
+}
+
+body[data-light="dusk"] {
+  --paper: #f1e3d5;
+  --paper-2: #e6d2be;
+  --ink: #2a211b;
+  --ink-soft: #4d3f36;
+  --muted: #7d6a5c;
+  --green: #3c5a4e;
+  --green-soft: #5f7d70;
+  --green-tint: #e2e6dd;
+  --coral: #a8543a;
+  --coral-tint: #f0d8cc;
+  --line: #d9c6b4;
+  --white: #fbf4ec;
+  --footer-bg: #473327;
+  --footer-ink: #f7ece1;
+}
+
+body[data-light="evening"] {
+  --paper: #1c1916;
+  --paper-2: #2a241d;
+  --ink: #f0e7da;
+  --ink-soft: #cfc3b3;
+  --muted: #a2917d;
+  --green: #e0bd93;
+  --green-soft: #c8a67e;
+  --green-tint: #2e2820;
+  --coral: #e9a273;
+  --coral-tint: #3a2b21;
+  --line: #3a332b;
+  --white: #24201b;
+  --footer-bg: #110e0b;
+  --footer-ink: #efe6da;
+}
+
+body[data-light="night"] .choice-btn:hover,
+body[data-light="evening"] .choice-btn:hover {
+  background: var(--paper-2);
+}
+
+@media (max-width: 480px) {
+  .progress-dot::after {
+    display: none;
+  }
+
+  .progress-dots {
+    margin-bottom: var(--space-3);
+  }
+}
+
+/* inline "text-align: center" from the old layout is overridden so the
+   notebook reads consistently from the left margin */
+h2[style*="center"],
+section[style*="text-align: center"],
+.section > p[style*="text-align: center"] {
+  text-align: left !important;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .nav-links {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.95rem;
+  }
+
+  .nav-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .nav-brand {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+  }
+
+  .stat .number {
+    font-size: 2.6rem;
+  }
+}
