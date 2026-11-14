@@ -9,6 +9,14 @@
       content="Walk through an ordinary day with Jay, a fictional university student, and learn to recognise small stress signals."
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Each story card floats in as the light changes */
+      .story-card{animation:cardIn .55s ease-out}
+      @keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+      @media (prefers-reduced-motion:reduce){
+        .story-card{animation:none}
+      }
+    </style>
   </head>
   <body data-light="morning">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -120,6 +128,10 @@
       .scene-art .moon-glow{fill:#e8e4d4;opacity:.35}
       .scene-art .phone-glow{fill:var(--coral);opacity:.3}
       .scene-art .bed-wood{fill:#8a7a6a;opacity:.4}
+      /* Restless phone glow — uneven flicker, like doomscrolling at 3am */
+      .scene-art .phone-glow{animation:phoneFlicker 2.3s ease-in-out infinite}
+      @keyframes phoneFlicker{0%,100%{opacity:.18}30%{opacity:.42}55%{opacity:.25}75%{opacity:.38}}
+      @media (prefers-reduced-motion:reduce){.scene-art *{animation:none!important}}
     </style>
   </defs>
   <rect x="22" y="20" width="62" height="78" class="night-sky" rx="2"/>
@@ -171,6 +183,11 @@
       .scene-art .desk-wood{fill:#c9a87c;opacity:.4}
       .scene-art .book-page{fill:#f0e6d2;opacity:.6}
       .scene-art .coffee{fill:#6b4a2a;opacity:.35}
+      /* Coffee steam drifts up and dissolves */
+      .scene-art .steam{animation:steamRise 3.2s ease-in-out infinite}
+      .scene-art .st2{animation-delay:1.6s}
+      @keyframes steamRise{0%{opacity:0;transform:translateY(2px)}40%{opacity:.5}100%{opacity:0;transform:translateY(-9px)}}
+      @media (prefers-reduced-motion:reduce){.scene-art *{animation:none!important}}
     </style>
   </defs>
   <rect x="22" y="18" width="60" height="70" class="sky" rx="2"/>
@@ -203,8 +220,8 @@
   <path d="M 268 100 L 268 118 L 288 118 L 288 100 Z" class="ln"/>
   <rect x="268" y="104" width="20" height="14" class="coffee"/>
   <path d="M 288 104 Q 296 104 296 110 Q 296 116 288 116" class="ln"/>
-  <path d="M 272 95 Q 275 91 278 95" class="ln-s"/>
-  <path d="M 278 95 Q 281 91 284 95" class="ln-s"/>
+  <path d="M 272 95 Q 275 91 278 95" class="ln-s steam st1"/>
+  <path d="M 278 95 Q 281 91 284 95" class="ln-s steam st2"/>
   <line x1="100" y1="148" x2="310" y2="148" class="ln-s"/>
 </svg>
           `,
@@ -232,6 +249,13 @@
       .scene-art .sunset{fill:#e07850;opacity:.45}
       .scene-art .phone-screen{fill:#f0c8b0;opacity:.5}
       .scene-art .coral-fill{fill:var(--coral);opacity:.7}
+      /* Group-chat messages pop in one by one, then wait for a reply */
+      .scene-art .msg{opacity:0;animation:msgIn .45s ease-out forwards}
+      .scene-art .m1{animation-delay:.5s}
+      .scene-art .m2{animation-delay:1.1s}
+      .scene-art .m3{animation-delay:1.7s}
+      @keyframes msgIn{from{opacity:0;transform:translateY(4px)}to{opacity:.85;transform:none}}
+      @media (prefers-reduced-motion:reduce){.scene-art *{animation:none!important}.scene-art .msg{opacity:.85}}
     </style>
   </defs>
   <line x1="40" y1="30" x2="280" y2="86" class="ln"/>
@@ -248,9 +272,9 @@
   <rect x="56" y="56" width="30" height="46" rx="2" class="ln"/>
   <rect x="60" y="60" width="22" height="38" rx="1" class="phone-screen"/>
   <rect x="60" y="60" width="22" height="38" rx="1" class="ln-s"/>
-  <rect x="62" y="64" width="14" height="5" rx="1" class="coral-fill"/>
-  <rect x="66" y="72" width="14" height="5" rx="1" class="coral-fill"/>
-  <rect x="62" y="80" width="10" height="5" rx="1" class="coral-fill"/>
+  <rect x="62" y="64" width="14" height="5" rx="1" class="coral-fill msg m1"/>
+  <rect x="66" y="72" width="14" height="5" rx="1" class="coral-fill msg m2"/>
+  <rect x="62" y="80" width="10" height="5" rx="1" class="coral-fill msg m3"/>
   <line x1="40" y1="140" x2="280" y2="140" class="ln-s"/>
 </svg>
           `,
@@ -279,6 +303,13 @@
       .scene-art .desk-wood{fill:#7a6a5a;opacity:.4}
       .scene-art .screen{fill:#a8c0d0;opacity:.35}
       .scene-art .coffee{fill:#6b4a2a;opacity:.4}
+      /* Lamp glow breathes slowly; steam drifts — the calmest scene */
+      .scene-art .lamp-glow{animation:lampBreathe 4.5s ease-in-out infinite alternate}
+      @keyframes lampBreathe{from{opacity:.16}to{opacity:.34}}
+      .scene-art .steam{animation:steamRise 3.6s ease-in-out infinite}
+      .scene-art .st2{animation-delay:1.8s}
+      @keyframes steamRise{0%{opacity:0;transform:translateY(2px)}40%{opacity:.45}100%{opacity:0;transform:translateY(-9px)}}
+      @media (prefers-reduced-motion:reduce){.scene-art *{animation:none!important}}
     </style>
   </defs>
   <ellipse cx="90" cy="94" rx="30" ry="6" class="lamp-glow"/>
@@ -303,8 +334,8 @@
   <path d="M 250 106 L 250 124 L 270 124 L 270 106 Z" class="ln"/>
   <rect x="250" y="112" width="20" height="12" class="coffee"/>
   <path d="M 270 110 Q 278 110 278 115 Q 278 120 270 120" class="ln"/>
-  <path d="M 256 100 Q 258 96 256 92" class="ln-s"/>
-  <path d="M 262 100 Q 264 96 262 92" class="ln-s"/>
+  <path d="M 256 100 Q 258 96 256 92" class="ln-s steam st1"/>
+  <path d="M 262 100 Q 264 96 262 92" class="ln-s steam st2"/>
 </svg>
           `,
           title: "The email that's almost sent",
