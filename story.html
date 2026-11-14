@@ -48,8 +48,16 @@
           </div>
           <p class="mono-note">
             The page's light follows Jay's day — from 3 a.m. dark to evening
-            lamp.
+            lamp. Sound is optional and off by default.
           </p>
+          <button
+            id="sound-toggle"
+            type="button"
+            aria-pressed="false"
+            style="margin-top:0.75rem;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1rem;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;cursor:pointer;opacity:0.75;"
+          >
+            Sound: off
+          </button>
         </div>
       </section>
 
@@ -308,6 +316,123 @@
         }
       ];
 
+      // Ambient soundscapes — generated with Web Audio, no audio files.
+      // Off by default; starts only after the user opts in (browser autoplay policy).
+      const SoundScapes = (() => {
+        let ctx = null;
+        let enabled = false;
+        let current = null;
+        let noiseBuffer = null;
+
+        function ensureCtx() {
+          if (!ctx) {
+            ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const len = ctx.sampleRate * 2;
+            noiseBuffer = ctx.createBuffer(1, len, ctx.sampleRate);
+            const data = noiseBuffer.getChannelData(0);
+            for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+          }
+          if (ctx.state === 'suspended') ctx.resume();
+        }
+
+        function noiseSource() {
+          const src = ctx.createBufferSource();
+          src.buffer = noiseBuffer;
+          src.loop = true;
+          return src;
+        }
+
+        function buildScape(kind) {
+          const g = ctx.createGain();
+          g.gain.value = 0;
+          g.connect(ctx.destination);
+          const sources = [];
+          const target = 0.05;
+
+          if (kind === 'night') {
+            // Low restless hum + faint electrical hiss
+            const osc = ctx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.value = 55;
+            const og = ctx.createGain();
+            og.gain.value = 0.5;
+            osc.connect(og); og.connect(g);
+            osc.start();
+            sources.push(osc);
+            const n = noiseSource();
+            const hp = ctx.createBiquadFilter();
+            hp.type = 'highpass'; hp.frequency.value = 3000;
+            const ng = ctx.createGain(); ng.gain.value = 0.12;
+            n.connect(hp); hp.connect(ng); ng.connect(g);
+            n.start();
+            sources.push(n);
+          } else if (kind === 'morning') {
+            // Soft library room tone
+            const n = noiseSource();
+            const lp = ctx.createBiquadFilter();
+            lp.type = 'lowpass'; lp.frequency.value = 700;
+            n.connect(lp); lp.connect(g);
+            n.start();
+            sources.push(n);
+          } else if (kind === 'dusk') {
+            // Open-air evening, slow wind movement
+            const n = noiseSource();
+            const bp = ctx.createBiquadFilter();
+            bp.type = 'bandpass'; bp.frequency.value = 400; bp.Q.value = 0.6;
+            n.connect(bp); bp.connect(g);
+            const lfo = ctx.createOscillator();
+            lfo.frequency.value = 0.15;
+            const lg = ctx.createGain(); lg.gain.value = 120;
+            lfo.connect(lg); lg.connect(bp.frequency);
+            lfo.start();
+            n.start();
+            sources.push(n, lfo);
+          } else {
+            // evening — warm, near-silent low room tone
+            const n = noiseSource();
+            const lp = ctx.createBiquadFilter();
+            lp.type = 'lowpass'; lp.frequency.value = 220;
+            n.connect(lp); lp.connect(g);
+            n.start();
+            sources.push(n);
+          }
+          g.gain.linearRampToValueAtTime(target, ctx.currentTime + 1.2);
+          return { gain: g, sources };
+        }
+
+        function stopCurrent() {
+          if (!current) return;
+          const c = current;
+          current = null;
+          c.gain.gain.cancelScheduledValues(ctx.currentTime);
+          c.gain.gain.setValueAtTime(c.gain.gain.value, ctx.currentTime);
+          c.gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6);
+          setTimeout(() => {
+            c.sources.forEach(s => { try { s.stop(); } catch (e) {} });
+            c.gain.disconnect();
+          }, 700);
+        }
+
+        return {
+          play(kind) {
+            if (!enabled || !ctx) return;
+            stopCurrent();
+            current = buildScape(kind);
+          },
+          toggle(kind) {
+            enabled = !enabled;
+            if (enabled) {
+              ensureCtx();
+              stopCurrent();
+              current = buildScape(kind);
+            } else if (ctx) {
+              stopCurrent();
+            }
+            return enabled;
+          }
+        };
+      })();
+
       let currentNode = 0;
       const container = document.getElementById('story-container');
       const progressDots = document.getElementById('progress-dots');
@@ -350,6 +475,7 @@
           });
         });
         liveRegion.textContent = `Part ${index + 1}: ${node.title}`;
+        SoundScapes.play(node.light);
       }
 
       function showInsight(node, choiceIdx) {
@@ -396,6 +522,14 @@
           });
         }
       }
+
+      const soundBtn = document.getElementById('sound-toggle');
+      soundBtn.addEventListener('click', () => {
+        const on = SoundScapes.toggle(storyNodes[currentNode].light);
+        soundBtn.textContent = on ? 'Sound: on' : 'Sound: off';
+        soundBtn.setAttribute('aria-pressed', String(on));
+        soundBtn.style.opacity = on ? '1' : '0.75';
+      });
 
       renderProgress();
       renderNode(0);
